@@ -4,6 +4,7 @@ JavaScript에는 총 8개의 데이터 타입이 존재한다.
 
 ## 1. Number
 - 정수(integer) 및 부동 소수점(floating point number)를 나타낸다.
+- `(2^53-1)`와 `-(2^53-1)` 사이의 숫자만 나타낼 수 있다.
 - 일반적인 숫자 외에 `"특수 숫자 값(special numeric values)"`이 있다: `Infinity`, `-Infinity`, `Nan`
 
 ### `Infinity`
@@ -36,6 +37,32 @@ JavaScript에는 총 8개의 데이터 타입이 존재한다.
 > JavaScript에서 수학을 하는 것은 "안전하다". 0으로 나누기, 숫자로 구성되지 않은 문자열을 숫자로 간주하기, 등등. <br>
 > 이러한 "틀린" 수학적 오류로 인해서 스크립트는 치명적인 오류("프로그램 실행이 죽는것")와 함께 멈추지 않을 것이다. 최악의 경우 결과로 `NaN`을 반환받게 된다. 
 
+
+## 2. BigInt
+- `(2^53-1)`와 `-(2^53-1)`보다 큰 숫자를 나타내기 위해서 사용된다.
+- 숫자 끝에 `n`을 붙여서 `BigInt`를 만들 수 있다. 
+  ```JavaScript
+  // 끝에 있는 "n"이 해당 숫자가 BigInt 라는 것을 나타낸다
+  const BigInt = 1234567890123456789012345678901234567890n;
+  ```
+
+
+## 3. String
+- JavaScript의 문자열은 따옴표로 묶어 있어야 한다:
+    - 큰 따옴표: `"Hello"`
+    - 작은 따옴표: `'Hello'`
+    - 백틱: ``Hello``
+- 큰 따옴표랑 작은 따옴표는 일반 따옴표이다. 둘의 차이는 없고 단순 취향 차이다. 
+- 백틱은 "확장 기능" 따옴표이다. 변수와 식을 ${...}으로 감싸서 문자열에 포함시킬 수 있다:
+  ```JavaScript
+  let name = "John";
+  
+  // 변수 포함하기
+  alert(`Hello, ${name}!`); // Hello, John!
+  
+  // 식 포함하기
+  alert(`the result is ${1+2}`); // the result is 3
+  ```
 
 ## References
 - [Data Types](https://javascript.info/types)
