@@ -117,15 +117,41 @@ TDZ를 이해하기 위해서는 각 두 변수의 생명주기(life cycle)를 �
 ```
 <details>
   <summary>Steps </summary>
-  `message` 변수와 `salute` 함수에 메로리 공간이 할당된다. 이때 `salute` 변수의 값은 `undefined`으로 초기화된다. 
-  `salute` 함수가 실행되고 `message` 변수를 출력한다. 해당 시점에서 `message` 변수의 값은 `undefined`이기 때문에 해당 값이 출력된다.  
-  `message` 변수의 값이 `Hello there!`로 지정된다. 
+	
+  - `message` 변수와 `salute` 함수에 메로리 공간이 할당된다. 이때 `message` 변수의 값은 `undefined`으로 초기화된다. 
+  - `salute` 함수가 실행되고 `message` 변수를 출력한다. 해당 시점에서 `message` 변수의 값은 `undefined`이기 때문에 해당 값이 출력된다.  
+  - `message` 변수의 값이 `Hello there!`로 지정된다. 
+	
 </details>
 <br/>
 
 ### let 변수
 
+- 생성 단계: JavaScript engine이 `let` 변수에 메모리 공간을 할당하지만 변수 값을 초기화하지 않는다. 초기화하지 않은 변수에 접근하려고 시도한다면 `ReferenceError`가 발생한다.
+- 실행 단계: `var` 변수가 동일하게, 지정할 값이 있을 경우 해당 값이 할당된다. 
 
+```javascript
+  /// TDZ 시작
+  function salute() {
+    console.log(message);
+  }
+  
+  salute();   // Uncaught ReferenceError: message is not defined
+  
+  let message = "Hello there!";	// TDZ 종료
+```
+<details>
+  <summary>Steps </summary>
+	
+  - `message` 변수와 `salute` 함수에 메로리 공간이 할당된다. 이때 `message` 변수의 값은 초기화되지 않는다.
+  - `salute` 함수가 실행되고 `message` 변수를 출력한다. 하지만 해당 시점에서 `message` 변수의 값은 초기화되지 않았기 때문에 `ReferenceError`가 발생하고 코드 실행이 멈춘다.
+	
+</details>
+<br/>
+
+위의 예제처럼, 블록의 시작부터 `let` 변수 값이 할당될 때까지의 구간, 즉 해당 변수 값을 접근하지 못하는 구간을 `Temporal Dead Zone(TDZ)`이라고 부른다. 
+
+<br/><br/>
 ## 요약
 | |var|let|
 |---|---|---|
@@ -134,6 +160,7 @@ TDZ를 이해하기 위해서는 각 두 변수의 생명주기(life cycle)를 �
 | 프로퍼티에 | 추가됨 | 추가되지 않음 |
 | TDZ | 있음 | 없음 |
 
+<br/><br/>
 ## References
 - [Difference between var and let](https://www.javascripttutorial.net/es6/difference-between-var-and-let/)
 - [JavaScript let: Declaring Block-Scoped Variables](https://www.javascripttutorial.net/es6/javascript-let/)
