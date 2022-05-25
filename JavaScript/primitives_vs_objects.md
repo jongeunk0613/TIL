@@ -16,7 +16,7 @@ let foo = 'bar'
 console.log(foo); // 'bar'
 
 foo.toUpperCase();
-console.log(bar); // 'bar'
+console.log(foo); // 'bar'
 ```
 <br/>
 
