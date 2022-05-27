@@ -130,3 +130,4 @@ console.log(obj1 === obj2);   // true
 
 ### References
 - [What are the differences between primitives and objects in JavaScript?](https://www.designcise.com/web/tutorial/what-are-the-differences-between-primitives-and-objects-in-javascript)
+- [String vs string](https://dev.to/sidthesloth92/typescript-quirks-string-or-string-which-one-should-i-use-13n6)
